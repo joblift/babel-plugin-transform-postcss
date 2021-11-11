@@ -1,27 +1,33 @@
-# Babel PostCSS Transform
+# - FORKED -
 
-[![NPM version][npm-image]][npm-url]
-[![Build status][travis-image]][travis-url]
-[![Coverage Status][coverage-image]][coverage-url]
-[![Dependencies][david-image]][david-url]
-[![devDependencies][david-dev-image]][david-dev-url]
+This is a fork from https://github.com/wbyoung/babel-plugin-transform-postcss, which seems currently unmaintained. Why? We needed to update dependencies and include the latest unpublished fixes from that library. Fork updates include:
+
+- supports PostCss 7.x
+- supports post-css-loader 2.x
+- supports other filename extensions, e.g. \*.scss
+
+Thanks to the original authors. Have fun.
+
+# Babel PostCSS Transform
 
 A [Babel][babel] plugin to process CSS files via [PostCSS][postcss].
 
 Using [PostCSS Modules][postcss-modules], it can transform:
 
 ```js
-import styles from './styles';
+import styles from "./styles";
 ```
 
 ```css
-.example { color: cyan; }
+.example {
+  color: cyan;
+}
 ```
 
 Into an object that has properties mirroring the style names:
 
 ```js
-var styles = {"example":"_example_amfqe_1"};
+var styles = { example: "_example_amfqe_1" };
 ```
 
 ## Configuration
@@ -40,12 +46,8 @@ Add the transform to your babel configuration, i.e. `.babelrc`:
 
 ```json
 {
-  "presets": [
-    ["env", { "targets": { "node": "current" }}]
-  ],
-  "plugins": [
-    "transform-postcss"
-  ]
+  "presets": [["env", { "targets": { "node": "current" } }]],
+  "plugins": ["transform-postcss"]
 }
 ```
 
@@ -54,7 +56,7 @@ Create a [`postcss.config.js`][postcss-load-config]:
 ```js
 module.exports = (ctx) => ({
   plugins: [
-    require('postcss-modules')({
+    require("postcss-modules")({
       getJSON: ctx.extractModules || (() => {}),
     }),
   ],
@@ -62,28 +64,35 @@ module.exports = (ctx) => ({
 ```
 
 You can also specify a location to load your `postcss.config.js` from in the options in your Babel configuration, i.e. `.babelrc`:
+
 ```json
 {
   "plugins": [
-    ["transform-postcss", {
-      "config": "configuration/postcss.config.js"
-    }]
+    [
+      "transform-postcss",
+      {
+        "config": "configuration/postcss.config.js"
+      }
+    ]
   ]
 }
 ```
 
 By default we look for `.css` files, but you can also specify the extensions we should look for:
+
 ```json
 {
   "plugins": [
-    ["transform-postcss", {
-      "config": "configuration/postcss.config.js",
-      "extensions": [".scss"]
-    }]
+    [
+      "transform-postcss",
+      {
+        "config": "configuration/postcss.config.js",
+        "extensions": [".scss"]
+      }
+    ]
   ]
 }
 ```
-
 
 ## Details
 
@@ -158,7 +167,6 @@ This project is distributed under the MIT license.
 [babelify]: https://github.com/babel/babelify
 [watchify]: https://github.com/substack/watchify
 [relateify]: https://github.com/wbyoung/relateify
-
 [travis-image]: http://img.shields.io/travis/wbyoung/babel-plugin-transform-postcss.svg?style=flat
 [travis-url]: http://travis-ci.org/wbyoung/babel-plugin-transform-postcss
 [npm-image]: http://img.shields.io/npm/v/babel-plugin-transform-postcss.svg?style=flat
