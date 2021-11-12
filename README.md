@@ -36,10 +36,10 @@ Install the transform as well as `postcss` and any PostCSS plugins you want to
 use:
 
 ```bash
-npm install --save-dev \
-  babel-plugin-transform-postcss \
-  postcss \
-  postcss-modules
+# using yarn
+yarn add -D @joblift/babel-plugin-transform-postcss
+# using npm
+npm install --save-dev @joblift/babel-plugin-transform-postcss
 ```
 
 Add the transform to your babel configuration, i.e. `.babelrc`:
