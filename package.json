@@ -1,6 +1,6 @@
 {
   "name": "@joblift/babel-plugin-transform-postcss",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "PostCSS Babel Transform",
   "main": "index.js",
   "scripts": {
